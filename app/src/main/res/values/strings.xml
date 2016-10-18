@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RxEndlessScroll</string>
+    <string name="currency_usd_prefix">$ %s</string>
+    <string name="product_amount">%d in stock</string>
+</resources>

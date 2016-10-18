@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+apply plugin: 'com.fernandocejas.frodo'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "me.stilroof.endlessscroll"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+greendao {
+    schemaVersion 1
+}
+
+ext {
+    supportVersion = '24.2.1'
+    butterknifeVersion = '8.4.0'
+    greendaoVersion = '3.1.1'
+    greendaoGeneratorVersion = '3.1.0'
+    eventbusVersion = '3.0.0'
+    rxAndroidVersion = '1.2.1'
+    rxJavaVersion = '1.1.6'
+    constraintLayoutVersion = '1.0.0-alpha9'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:design:$supportVersion"
+
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+    compile "io.reactivex:rxandroid:$rxAndroidVersion"
+    compile "io.reactivex:rxjava:$rxJavaVersion"
+
+    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+
+    testCompile 'junit:junit:4.12'
+}
